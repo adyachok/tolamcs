@@ -1,0 +1,52 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <style>
+        table {
+          border-collapse: collapse;
+        }
+
+        td, th {
+          border: 1px solid #999;
+          padding: 0.5rem;
+          text-align: left;
+        }
+
+        th {
+           text-align: center;
+        }
+
+        table > tr {
+            vertical-align: middle;
+        }
+        caption {
+            display: table-caption;
+            text-align: -webkit-center
+        }
+
+        tbody tr:nth-child(odd) {
+          background: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dictionary: {{ skvd_dict.name }}</h1>
+    <table>
+        <tr>
+            <th>Foreign word</th>
+            <th>Translation</th>
+        </tr>
+        {% for word in skvd_dict.words %}
+        <tr>
+            <td>{{ word.foreign_word}}</td>
+            <td>
+                <ul>
+                    {% for translation in word.translations %}
+                        <li>{{ translation.translation }}</li>
+                    {% endfor %}
+                </ul>
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
